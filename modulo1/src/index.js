@@ -31,7 +31,7 @@ export default class App extends Component {
   }
 
   // 3º
-  // Usado para fazer requests nas API, buscar servicos para serem exibidos 
+  // Usado para fazer requests nas API, buscar servicos para serem exibidos
   // em tela ou alteracao assim que o component estiver em tela
   componentDidMount() {
 
@@ -72,7 +72,7 @@ export default class App extends Component {
   }
 
   // 9º
-  // Permite recuperar erros em execucao 
+  // Permite recuperar erros em execucao
   componentDidCatch(err, info) {
     // alert
   }
