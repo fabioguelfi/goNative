@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import {colors, metrics, general} from '../../styles/';
+import { colors, metrics, general } from '../../styles/';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.secundary,
     padding: metrics.basePadding * 2,
-    alignItems:  'stretch',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
 
@@ -21,14 +21,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: metrics.baseMargin,
     fontSize: 14,
-    color: colors.light,  
+    color: colors.light,
     lineHeight: 21,
   },
 
-  form : {
+  err: {
+    color: colors.danger,
+    textAlign: 'center',
+    marginTop: metrics.marginTop,
+  },
+
+  form: {
     marginTop: metrics.baseMargin * 2
   },
-  
+
   input: {
     backgroundColor: colors.white,
     borderRadius: metrics.baseRadius,
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: 'bold',
     fontSize: 14,
-  }
+  },
 
 
 })
