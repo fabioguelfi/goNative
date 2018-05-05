@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styles from './style';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class HeaderRight extends Component {
 
-  signOut = () => {}
+  signOut = () => { }
 
   render() {
     return (
       <TouchableOpacity onPress={this.signOut}>
-        <Text>Sair</Text>
+        <Icon name="exchange" size={16} style={styles.icon} />
       </TouchableOpacity>
     );
   }
