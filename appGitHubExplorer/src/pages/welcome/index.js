@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles';
 import api from '../../services/api';
 
-import { View, Text, TextInput, TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StatusBar, ActivityIndicator, AsyncStorage } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 
@@ -31,6 +31,10 @@ export default class Welcome extends Component {
 
   };
 
+  saveUser = async (username) => {
+    await AsyncStorage.setItem('@Githuber:username', username)
+  }
+
   signIn = async () => {
 
     const { username } = this.state;
@@ -42,6 +46,8 @@ export default class Welcome extends Component {
     try {
 
       await this.checkUserExists(username);
+
+      await this.saveUser(username);
 
       const resetAction = NavigationActions.reset({
         index: 0,
