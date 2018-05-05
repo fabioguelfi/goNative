@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, AsyncStorage } from 'react-native';
+import { NavigationActions } from 'react-navigation'
+import PropTypes from 'prop-types';
 import styles from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
+;
 
 export default class HeaderRight extends Component {
 
-  signOut = () => { }
+  static propTypes = {
+    navigation: PropTypes.shape({
+      dispatch: PropTypes.func,
+    }).isRequired  
+  };
+
+  signOut = async () => {
+
+    await AsyncStorage.removeItem('@Githuber:username');
+
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Welcome' }),
+      ],
+    });
+
+    this.props.navigation.dispatch(resetAction);
+
+  }
 
   render() {
     return (
-      <TouchableOpacity onPress={this.signOut}>
+      <TouchableOpacity onPress={() => this.signOut()}>
         <Icon name="exchange" size={16} style={styles.icon} />
       </TouchableOpacity>
     );
