@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles';
 
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 const Welcome = () => (
   <View style={styles.container}>
@@ -27,5 +27,7 @@ const Welcome = () => (
 Welcome.navigationOptions = { 
   header: null,
 }
+
+StatusBar.setBarStyle("light-content")
 
 export default Welcome;
