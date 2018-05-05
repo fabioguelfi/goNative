@@ -18,18 +18,18 @@ export default class App extends Component {
   }
 
   appLoaded = (username) => {
-    this.setState({ 
-      userChecked: true, 
-      userLogged:  !!username
+    this.setState({
+      userChecked: true,
+      userLogged: !!username
     });
   }
 
   render() {
-    if(!this.state.userChecked) return null
-   
+    if (!this.state.userChecked) return null
+
     const Routes = createNavigator(this.state.userLogged);
 
-    return <Routes/>
+    return <Routes />
 
   }
 }
