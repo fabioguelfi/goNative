@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles';
+import api from '../../services/api';
 
 import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 import { NavigationActions } from 'react-navigation';
@@ -9,24 +10,48 @@ export default class Welcome extends Component {
 
   static navigationOptions = {
     header: null,
-  }
+  };
 
   static propTypes = {
     navigation: PropTypes.shape({
       dispatch: PropTypes.func,
     }).isRequired,
-  }
+  };
 
-  signIn = () => {
-    console.log('call')
-    const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'User' }),
-      ],
-    });
+  state = {
+    username: ''
+  };
 
-    this.props.navigation.dispatch(resetAction);
+  checkUserExists = async (username) => {
+
+    const user = await api.get(`/users/${username}`);
+    return user;
+
+  };
+
+  signIn = async () => {
+
+    const { username } = this.state;
+
+    if (username === 0) return;
+
+    try {
+
+      await this.checkUserExists(username);
+
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'User' }),
+        ],
+      });
+
+      this.props.navigation.dispatch(resetAction);
+
+    } catch (err) {
+    
+    }
+
   };
 
   render() {
@@ -41,7 +66,9 @@ export default class Welcome extends Component {
             autoCapitalize="none"
             autoCorrect={false}
             placeholder="Digite seu usuario"
-            underlineColorAndroid="rgba(0,0,0,0)">
+            underlineColorAndroid="rgba(0,0,0,0)"
+            value={this.state.username}
+            onChangeText={username => this.setState({ username })}>
           </TextInput>
           <TouchableOpacity
             style={styles.button}
