@@ -4,7 +4,7 @@ import Welcome from './pages/welcome';
 import Repositories from './pages/repositories';
 import Organizations from './pages/organizations';
 import HeaderRight from './components/headerRight';
-import { metrics } from './styles';
+import { metrics, colors } from './styles';
 
 const createNavigator = (isLogged = false) => StackNavigator({
   Welcome: { screen: Welcome },
@@ -12,6 +12,17 @@ const createNavigator = (isLogged = false) => StackNavigator({
     screen: TabNavigator({
       Repositories: { screen: Repositories },
       Organizations: { screen: Organizations },
+    },{
+      tabBarPosition: 'bottom',
+      tabBarOptions: {
+        showIcon: true,
+        showLabel: false,
+        activeTintColor: colors.white,
+        inactiveTintColor: colors.whiteTransparente,
+        style: {
+          backgroundColor: colors.secundary,
+        },
+      },
     }),
   },
 }, {
