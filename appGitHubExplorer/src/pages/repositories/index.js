@@ -3,9 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, AsyncStorage, ActivityIndicator, FlatList, Text } from 'react-native';
 import api from '../../services/api';
 import styles from './style';
-import RepositoryItem from './componnets';
-
-
+import RepositoryItem from './components';
 
 export default class Repositories extends Component {
 
