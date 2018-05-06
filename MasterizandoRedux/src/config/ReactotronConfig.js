@@ -1,10 +1,12 @@
-import Reactotron from 'reactotron-react-native'
+import Reactotron from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
 
-const tron = Reactotron
-  .configure({ host: '192.168.1.120' })
+if (__DEV__) {
+  const tron = Reactotron
+  .configure({ host: '192.168.1.17' })
   .useReactNative()
-  .connect()
-
-tron.clear(); //Limpa o console a cada requisição de atualizacção
-
-console.tron = tron; //Gera um console.log global para uso em qualquer arquivo
+  .use(reactotronRedux())
+  .connect();
+  tron.clear();
+  console.tron = tron;
+}
