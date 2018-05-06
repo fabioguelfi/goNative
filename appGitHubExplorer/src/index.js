@@ -3,7 +3,6 @@ import { AsyncStorage } from 'react-native';
 import createNavigator from './routes';
 import ReactotronConfig from './config/ReactotronConfig';
 
-
 export default class App extends Component {
 
   state = {

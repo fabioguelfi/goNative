@@ -14,5 +14,5 @@ export default {
 
   transparent: 'transparent',
   darkTransparent: 'rgba(0, 0, 0, 0.6)',
-  whiteTransparente: 'rbga(250,250,250,0.3)',
+  whiteTransparente: 'rgba(250, 250, 250, 0.3)',
 };  
